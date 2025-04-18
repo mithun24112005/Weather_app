@@ -6,12 +6,18 @@ const humidity = document.querySelector('#humidity');
 const wind = document.querySelector('#wind-speed');
 const weather_des = document.querySelector('.weather-discription');
 const weather_not_found = document.querySelector('.weather-not');
+const bg_video = document.querySelector('#vid-here');
 
 const get_data = async function getdata(url) {
-    console.log("getting data...");
-    let response = await fetch(`${url}`);
-    let data = await response.json();
-    return data;
+    try {
+        console.log("Getting data...");
+        let response = await fetch(url);
+        let data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        throw error;
+    }
 };
 
 function checkWeather(city) {
@@ -29,17 +35,24 @@ function checkWeather(city) {
             wind.innerHTML = `${data.wind.speed} Km/H`;
             weather_des.innerHTML = `${data.weather[0].description}`;
 
-            // Update the weather image based on the weather condition
+            // Update the weather image and background video based on the weather condition
             const weatherCondition = data.weather[0].main.toLowerCase();
             if (weatherCondition.includes("cloud")) {
                 weatherimg.src = "cloud.png";
+                // bg_video.querySelector('source').src = "cloud_vid.mp4";
             } else if (weatherCondition.includes("rain")) {
                 weatherimg.src = "rain.png";
+                // bg_video.querySelector('source').src = "rain_vid.mp4";
             } else if (weatherCondition.includes("clear")) {
                 weatherimg.src = "clear.png";
+                // bg_video.querySelector('source').src = "clear_vid.mp4";
+            } else if (weatherCondition.includes("mist")) {
+                weatherimg.src = "mist.png";
+                // bg_video.querySelector('source').src = "mist_vid.mp4";
             } else {
                 weatherimg.src = "404.png";
             }
+
         } else {
             // Display "location not found" message
             weather_not_found.innerHTML = "Sorry, location not found";

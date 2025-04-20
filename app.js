@@ -6,7 +6,7 @@ const humidity = document.querySelector('#humidity');
 const wind = document.querySelector('#wind-speed');
 const weather_des = document.querySelector('.weather-discription');
 const weather_not_found = document.querySelector('.weather-not');
-const bg_video_container = document.querySelector('.background-video');
+const container_bg = document.querySelector('.container');
 
 const get_data = async function getdata(url) {
     try {
@@ -21,25 +21,6 @@ const get_data = async function getdata(url) {
         throw error;
     }
 };
-
-async function bg_videos(video) {
-    // Remove any existing video elements
-    while (bg_video_container.firstChild) {
-        bg_video_container.removeChild(bg_video_container.firstChild);
-    }
-    
-    // Create new video element
-    const videoElement = document.createElement('video');
-    videoElement.autoplay = true;
-    videoElement.muted = true;
-    videoElement.loop = true;
-    videoElement.playsInline = true;
-    videoElement.classList.add('bg-video');
-    const sourceElement = document.createElement('source');
-    sourceElement.src = video;
-    videoElement.appendChild(sourceElement);
-    bg_video_container.appendChild(videoElement);
-}
 
 function checkWeather(city) {
     const api_key = '2817f07653293c4b754ef29e35506f4b';
@@ -57,19 +38,19 @@ function checkWeather(city) {
             const weatherCondition = data.weather[0].main.toLowerCase();
             if (weatherCondition.includes("cloud")) {
                 weatherimg.src = "cloud.png";
-                bg_videos('cloud_vid.mp4');
+                container_bg.style.backgroundImage = "url('cloud_bg.jpg')";
             } else if (weatherCondition.includes("rain")) {
                 weatherimg.src = "rain.png";
-                bg_videos('rain_vid.mp4');
+                container_bg.style.backgroundImage = "url('rain_bg.jpg')";
             } else if (weatherCondition.includes("clear")) {
                 weatherimg.src = "clear.png";
-                bg_videos('clear_vid.mp4');
+                container_bg.style.backgroundImage = "url('clear_bg.jpg')";
             } else if (weatherCondition.includes("mist")) {
                 weatherimg.src = "mist.png";
-                bg_videos('mist_vid.mp4');
+                container_bg.style.backgroundImage = "url('mist_bg.jpg')";
             } else if (weatherCondition.includes("snow")) {
                 weatherimg.src = "snow.png";
-                bg_videos('snow_vid.mp4');
+                container_bg.style.backgroundImage = "url('snow_bg.jpg')";
             } else {
                 weatherimg.src = "404.png";
             }

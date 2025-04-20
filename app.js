@@ -53,7 +53,7 @@ function checkWeather(city) {
                 container_bg.style.backgroundImage = "url('snow_bg.jpg')";
             } else {
                 weatherimg.src = "404.png";
-                container_bg.style.backgroundImage = "url('default_bg.jpg')";
+                container_bg.style.backgroundImage = "url('default_bg.jpeg')";
             }
         } else {
             weather_not_found.innerHTML = "Sorry, location not found";
@@ -63,7 +63,7 @@ function checkWeather(city) {
             wind.innerHTML = "--Km/H";
             weather_des.innerHTML = "-----";
             weatherimg.src = "404.png";
-            container_bg.style.backgroundImage = "url('default_bg.jpg')";
+            container_bg.style.backgroundImage = "url('default_bg.jpeg')";
         }
     }).catch(error => {
         console.error("Error fetching weather data:", error);
@@ -74,7 +74,7 @@ function checkWeather(city) {
         wind.innerHTML = "--Km/H";
         weather_des.innerHTML = "-----";
         weatherimg.src = "404.png";
-        container_bg.style.backgroundImage = "url('default_bg.jpg')";
+        container_bg.style.backgroundImage = "url('default_bg.jpeg')";
     });
 }
 

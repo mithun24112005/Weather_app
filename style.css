@@ -122,7 +122,7 @@ body{
 }
 
 .weather-not{
-    color: grey;
+    color: rgb(69, 69, 69);
     display: flex;
     justify-content: center;
     align-items: center;

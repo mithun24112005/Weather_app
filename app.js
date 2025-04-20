@@ -53,27 +53,28 @@ function checkWeather(city) {
                 container_bg.style.backgroundImage = "url('snow_bg.jpg')";
             } else {
                 weatherimg.src = "404.png";
+                container_bg.style.backgroundImage = "url('default_bg.jpg')";
             }
-
         } else {
             weather_not_found.innerHTML = "Sorry, location not found";
-
+            
             temp.innerHTML = "--°C";
             humidity.innerHTML = "--%";
             wind.innerHTML = "--Km/H";
             weather_des.innerHTML = "-----";
             weatherimg.src = "404.png";
-            bg_videos('default_bg_vid.mp4');
+            container_bg.style.backgroundImage = "url('default_bg.jpg')";
         }
     }).catch(error => {
         console.error("Error fetching weather data:", error);
         weather_not_found.innerHTML = "Sorry, location not found";
-
+        
         temp.innerHTML = "--°C";
         humidity.innerHTML = "--%";
         wind.innerHTML = "--Km/H";
         weather_des.innerHTML = "-----";
         weatherimg.src = "404.png";
+        container_bg.style.backgroundImage = "url('default_bg.jpg')";
     });
 }
 

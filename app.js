@@ -20,6 +20,16 @@ const get_data = async function getdata(url) {
     }
 };
 
+async function bg_videos(video) {
+    try {
+        bg_video.querySelector('source').src = video;
+        await bg_video.load();
+        await bg_video.play();
+    } catch (error) {
+        console.error("Error playing background video:", error);
+    }
+}
+
 function checkWeather(city) {
     const api_key = '2817f07653293c4b754ef29e35506f4b';
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`; // Added `&units=metric` for Celsius
@@ -39,15 +49,16 @@ function checkWeather(city) {
             const weatherCondition = data.weather[0].main.toLowerCase();
             if (weatherCondition.includes("cloud")) {
                 weatherimg.src = "cloud.png";
-                // bg_video.querySelector('source').src = "cloud_vid.mp4";
+                bg_videos('cloud_vid.mp4')
             } else if (weatherCondition.includes("rain")) {
                 weatherimg.src = "rain.png";
-                // bg_video.querySelector('source').src = "rain_vid.mp4";
+                bg_videos('rain_vid.mp4')
             } else if (weatherCondition.includes("clear")) {
                 weatherimg.src = "clear.png";
-                // bg_video.querySelector('source').src = "clear_vid.mp4";
+                bg_videos('clear_vid.mp4')
             } else if (weatherCondition.includes("mist")) {
                 weatherimg.src = "mist.png";
+                bg_videos('mist_vid.mp4')
                 // bg_video.querySelector('source').src = "mist_vid.mp4";
             } else {
                 weatherimg.src = "404.png";

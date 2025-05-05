@@ -16,15 +16,7 @@ Welcome to the **Weather App**! This application allows users to check the curre
 
 ## 🛠️ Technologies Used
 
-- **HTML5**: For structuring the app.
-- **CSS3**: For styling and dynamic backgrounds.
-- **JavaScript (ES6)**: For fetching and displaying weather data.
+- **HTML**: For structuring the app.
+- **CSS**: For styling and dynamic backgrounds.
+- **JavaScript**: For fetching and displaying weather data.
 - **OpenWeatherMap API**: For real-time weather data.
-
----
-
-## 📦 Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/weather-app.git

@@ -23,7 +23,8 @@ const get_data = async function getdata(url) {
 };
 
 function checkWeather(city) {
-    const api_key = process.env.OPENWEATHER_API_KEY || '2817f07653293c4b754ef29e35506f4b';
+       // In your app.js, keep the API key as is for now
+    const api_key = '2817f07653293c4b754ef29e35506f4b';
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`;
     get_data(url).then(data => {
         if (data.cod === 200) {
